@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://unpkg.com/@bbob/parser/dist/index.js"></script>
+  <script src="https://unpkg.com/@bbob/core/dist/index.js"></script>
+  <script src="https://unpkg.com/@bbob/html/dist/index.js"></script>
+  <script src="https://unpkg.com/@bbob/preset-html5/dist/index.js"></script>
+  
+</head>
+<body>
+    <div class="container">
+      <tt id="htmlinfo"></tt>
+      <div id="htmlimage"></div>
+    </div>
+  </div>
+  <div id="time"></div>
+  <div id="error"></div>
+  <script type="text/javascript">
+        function b64DecodeUnicode(str) {
+            return decodeURIComponent(atob(str).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+        }
+
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        let value = params.base64; 
+        let arrayChar = b64DecodeUnicode(value).split('#')
+        const text = arrayChar[0]
+        const $$html = document.getElementById('htmlimage');
+        const $$htmlinfo = document.getElementById('htmlinfo');
+        const core = BbobCore.default(BbobPresetHTML5.default());
+        const errorHandler = function (err) {
+            $$html.innerText = err.message
+        }
+        const parsed = core.process(text, {
+                onError: errorHandler,
+                render: BbobHtml.render,
+        });
+        $$htmlinfo.innerText = arrayChar[1];
+        $$html.innerHTML = parsed.html;
+
+  </script>
+</body>
+</html>
