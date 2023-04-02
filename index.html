@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <audio id="myAudio" autoplay>
+      <source src="audio.mp3" type="audio/mpeg">
+    </audio>   
     <header>
       <h1>Primeiro Projeto em HTML/CSS</h1>
       <nav>
@@ -20,7 +23,21 @@
       <h2>A frase do Mestre Oogway</h2>
       <p>Ontem é história, amanhã é um mistério, mas hoje é uma dádiva. É por isso que é chamado de presente.</p>
       <div class="author">- Mestre Oogway, Kung Fu Panda</div>
-      <button onclick="window.location.href='https://www.youtube.com/watch?v=upykzqbYOcM'">Video</button>
+      <button class="video"onclick="window.location.href='https://www.youtube.com/watch?v=upykzqbYOcM'">Video</button>
+      <br>
+      <button class="audio" onclick="toggleAudio()">Pause</button>
     </section>
+
+    <script>
+      var myAudio = document.getElementById("myAudio");
+
+      function toggleAudio() {
+        if (myAudio.paused) {
+          myAudio.play();
+        } else {
+          myAudio.pause();
+        }
+      }
+    </script>
   </body>
 </html>
