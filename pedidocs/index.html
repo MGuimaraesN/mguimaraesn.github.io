@@ -23,13 +23,13 @@
             align-items: center;
             text-align: center;
             font-family: sans-serif;
-            padding-top: 50px;
         }
 
         .btn-container {
             display: flex;
             gap: 10px;
             margin-top: 10px;
+            justify-content: center;
         }
 
         .btn {
@@ -43,7 +43,7 @@
 
         footer {
             position: fixed;
-            bottom: 10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
@@ -73,7 +73,7 @@
 <body>
     <div id="conteudo">
         <h2>Aceita beber comigo hoje?</h2>
-        <h5>Obs: Tudo por sua conta!</h5>
+        <h4 style="margin-top: 10px;">Obs: Tudo por sua conta!</h4>
         <div class="btn-container">
             <button class="btn" onclick="exibirVideo()">SIM</button>
             <button class="btn" onclick="desvia(this)" onmouseover="desvia(this)">NÃO</button>
