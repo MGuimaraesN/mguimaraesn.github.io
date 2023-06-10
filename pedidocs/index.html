@@ -19,10 +19,11 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
             font-family: sans-serif;
+            padding-top: 50px;
         }
 
         .btn-container {
@@ -47,7 +48,7 @@
             transform: translateX(-50%);
             width: 100%;
             text-align: center;
-            font-size: 12px;
+            font-size: 18px;
             color: black;
         }
 
@@ -72,7 +73,7 @@
 <body>
     <div id="conteudo">
         <h2>Aceita beber comigo hoje?</h2>
-        <h5 style="margin-top: 10px;">Obs: Tudo por sua conta!</h5>
+        <h5>Obs: Tudo por sua conta!</h5>
         <div class="btn-container">
             <button class="btn" onclick="exibirVideo()">SIM</button>
             <button class="btn" onclick="desvia(this)" onmouseover="desvia(this)">NÃO</button>
