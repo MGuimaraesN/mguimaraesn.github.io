@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surpresa Romântica</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #1a1a2e;
+      color: #f0c1d1;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    #startButton {
+      background-color: #ff4d6d;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.7);
+      transition: background-color 0.3s, transform 0.2s;
+      user-select: none;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+      z-index: 10;
+    }
+
+    #startButton:hover {
+      background-color: #ff1c4d;
+      transform: scale(1.05);
+    }
+
+    #photoCard {
+      background-color: #22223b;
+      border-radius: 25px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.7);
+      display: none;
+      width: 100%;
+      max-width: 320px;
+      user-select: none;
+      z-index: 10;
+      box-sizing: border-box;
+    }
+
+    #photoCard img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+      object-fit: cover;
+      user-select: none;
+    }
+
+    #messageCard {
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 18px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(255, 77, 109, 0.7);
+      max-width: 90vw;
+      user-select: none;
+      min-height: 50px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+      z-index: 10;
+      box-sizing: border-box;
+    }
+
+    #timerCard {
+      background-color: #22223b;
+      color: #ff85a2;
+      padding: 6px 12px;
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.7);
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      user-select: none;
+      width: 100%;
+      max-width: 320px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      margin-top: 10px;
+      flex-shrink: 0;
+      display: none;
+      z-index: 10;
+      transition: box-shadow 0.3s;
+      box-sizing: border-box;
+    }
+
+    #timerText {
+      font-size: 16px;
+      font-weight: 600;
+      color: #f0c1d1;
+      margin-bottom: 8px;
+      user-select: none;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+
+    #timer {
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: #ff5c7a;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    #hiddenPlayer {
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: url('data:image/svg+xml;utf8,<svg fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center;
+      background-size: contain;
+      pointer-events: none;
+      opacity: 0.8;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      z-index: 5;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-30px); opacity: 0.8; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      #startButton {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+
+      #messageCard {
+        font-size: 16px;
+        padding: 10px 16px;
+      }
+
+      #timerCard {
+        font-size: 14px;
+        padding: 8px 14px;
+      }
+
+      #photoCard {
+        max-width: 90vw;
+      }
+
+      #timerText {
+        font-size: 14px;
+      }
+
+      #timer {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="startButton">❤️ Clique ❤️</button>
+
+  <div id="photoCard">
+    <img src="https://i.ibb.co/60s26wBk/20250425-1814-Inspirado-em-Your-Name-simple-compose-01jsqcr188e43rwk9mjtf3teec.png" alt="Foto Romântica" />
+  </div>
+
+  <div id="timerCard">
+    <div id="timerText">Enfim chegou o Dia</div>
+    <div id="timer"></div>
+  </div>
+
+  <div id="messageCard"></div>
+
+  <iframe
+    id="hiddenPlayer"
+    width="0"
+    height="0"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
+
+  <script>
+    const startButton = document.getElementById('startButton');
+    const messageCard = document.getElementById('messageCard');
+    const timerCard = document.getElementById('timerCard');
+    const timerText = document.getElementById('timerText');
+    const timer = document.getElementById('timer');
+    const hiddenPlayer = document.getElementById('hiddenPlayer');
+    const photoCard = document.getElementById('photoCard');
+
+    const dataSurpresa = new Date(2025, 5, 12); // junho é mês 5 (0-based)
+
+    const mensagens = [
+      { texto: "", cor: "#ff4d6d" },
+      { texto: "Oi, meu amor! 💖", cor: "#ff4d6d" },
+      { texto: "Você é a razão da minha felicidade!", cor: "#ff85a2" },
+      { texto: "Te amo mais que tudo! 😍", cor: "#ffb3c6" },
+      { texto: "Você é a luz da minha vida! ✨", cor: "#ffd6e0" },
+      { texto: "Quero passar cada segundo ao seu lado! 💕", cor: "#ffc2d1" }
+    ];
+
+    let indexMensagem = 0;
+    const videoId = "ztME4_puXjo";
+    hiddenPlayer.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1&mute=1&controls=0`;
+
+    function atualizarTimer() {
+      const agora = new Date();
+      const diff = dataSurpresa - agora;
+      if (diff <= 0) {
+        timerText.style.display = "none";
+        timer.textContent = "Hoje é o grande dia! ❤️";
+        clearInterval(intervaloTimer);
+        return;
+      }
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+      timer.textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    let intervaloTimer;
+
+    function mostrarMensagemAtual() {
+      if (indexMensagem < mensagens.length) {
+        const cor = mensagens[indexMensagem].cor;
+        messageCard.innerHTML = mensagens[indexMensagem].texto;
+        messageCard.style.backgroundColor = cor;
+        messageCard.style.boxShadow = `0 6px 20px ${cor}aa`;
+        timerCard.style.boxShadow = `0 4px 10px ${cor}aa`;
+      } else {
+        const corFinal = "#ff4d6d";
+        messageCard.innerHTML = "Te amo muito! ❤️";
+        messageCard.style.backgroundColor = corFinal;
+        messageCard.style.boxShadow = `0 6px 20px ${corFinal}aa`;
+        timerCard.style.boxShadow = `0 4px 10px ${corFinal}aa`;
+      }
+    }
+
+    function proximaMensagem() {
+      if (indexMensagem < mensagens.length) {
+        indexMensagem++;
+        mostrarMensagemAtual();
+      }
+    }
+
+    function playVideo() {
+      hiddenPlayer.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+      hiddenPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    }
+
+    function criarCoracao() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    function iniciarChuvaCoracoes() {
+      const intervalo = setInterval(criarCoracao, 150);
+      setTimeout(() => clearInterval(intervalo), 15000);
+    }
+
+    startButton.addEventListener('click', () => {
+      startButton.style.display = 'none';
+      photoCard.style.display = 'block';
+      messageCard.style.display = 'flex';
+      timerCard.style.display = 'block';
+
+      atualizarTimer();
+      intervaloTimer = setInterval(atualizarTimer, 1000);
+
+      mostrarMensagemAtual();
+
+      playVideo();
+      iniciarChuvaCoracoes();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (startButton.style.display === 'none') {
+        proximaMensagem();
+      }
+    });
+  </script>
+</body>
+</html>
