@@ -11,19 +11,19 @@ const dataSurpresa = new Date(2025, 5, 12); // Junho = 5
 const mensagens = [
   { texto: "", cor: "#9b0f25" },
   { texto: "Oi, meu amor! 💖", cor: "#9b0f25" },
-  { texto: "Queria te dizer algumas coisinhas que estão aqui, guardadas no meu coração...", cor: "#a8132e" },
+  { texto: "Queria te dizer algumas coisinhas...", cor: "#a8132e" },
   { texto: "Você foi, sem dúvida, a melhor coisa que me aconteceu.", cor: "#b21638" },
   { texto: "Nunca imaginei que me apaixonaria por alguém da forma como me apaixonei por você.", cor: "#c41d42" },
   { texto: "Desde que você entrou na minha vida, tudo mudou.", cor: "#d6274e" },
   { texto: "Agora, eu conto as horas pra te ver, pra conversar contigo, pra estar ao seu lado.", cor: "#e03358" },
-  { texto: "Quando estou com você, meu mundo muda completamente. Me sinto leve, feliz, inteiro.", cor: "#ea3d61" },
+  { texto: "Quando estou com você, meu mundo muda completamente. Me sinto mais feliz.", cor: "#ea3d61" },
   { texto: "Você foi a única pessoa que realmente me conheceu de verdade...", cor: "#8e0c22" },
   { texto: "Que conheceu esse meu lado mais romântico e sincero.", cor: "#b61f3e" },
-  { texto: "E eu quero que você saiba: eu te amo muitoooo... aliás, melhor dizendo, eu te amo mil milhões! ✨", cor: "#d94253" },
-  { texto: "Espero que, a partir de hoje, a gente possa escrever uma história linda juntos.", cor: "#dc4a5c" },
-  { texto: "Porque, sinceramente, eu acho que chegou a hora, né? Kkkkkk", cor: "#a60d2a" },
-  { texto: "Então, qual vai ser a sua resposta? 😳", cor: "#b7203a" },
-  { texto: "Seja qual for, quero que saiba: meu amor por você continua.", cor: "#c83245" },
+  { texto: "E eu quero que você saiba: eu te amo muitoooo aliás, melhor dizendo, eu te amo mil milhões! ✨", cor: "#d94253" },
+  { texto: "Espero que a partir de hoje, a gente possa escrever uma história linda juntos.", cor: "#dc4a5c" },
+  { texto: "Porque, eu acho que chegou a hora, né? Kkkkkk", cor: "#a60d2a" },
+  { texto: "Eaiii, qual vai ser a sua resposta? 😳", cor: "#b7203a" },
+  { texto: "Seja qual for, quero que saiba...", cor: "#c83245" },
 ];
 
 let indexMensagem = 0;
@@ -55,7 +55,7 @@ function mostrarMensagemAtual() {
     timerCard.style.boxShadow = `0 4px 10px ${cor}aa`;
   } else {
     const corFinal = "#7a0819";
-    messageCard.innerHTML = "Te amo muito! ❤️";
+    messageCard.innerHTML = "Eu te amo muito! ❤️";
     messageCard.style.backgroundColor = corFinal;
     messageCard.style.boxShadow = `0 6px 20px ${corFinal}aa`;
     timerCard.style.boxShadow = `0 4px 10px ${corFinal}aa`;
