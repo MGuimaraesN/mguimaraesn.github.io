@@ -10,6 +10,7 @@ const dataSurpresa = new Date(2025, 5, 12); // Junho = 5
 
 const mensagens = [
 [
+    { texto: "", cor: "#ff6b81" },
   { texto: "Oi, meu amor! 💖", cor: "#ff6b81" },
   { texto: "Queria te dizer algumas coisinhas que estão aqui, guardadas no meu coração...", cor: "#ffa6b8" },
   { texto: "Você foi, sem dúvida, a melhor coisa que me aconteceu.", cor: "#ff8fab" },
@@ -67,6 +68,7 @@ function mostrarMensagemAtual() {
 
 function proximaMensagem() {
   if (indexMensagem < mensagens.length) {
+    console.log(`Exibindo mensagem ${indexMensagem}: mensagens.length = ${mensagens.length}`);
     indexMensagem++;
     mostrarMensagemAtual();
   }
