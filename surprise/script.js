@@ -9,12 +9,24 @@ const photoCard = document.getElementById('photoCard');
 const dataSurpresa = new Date(2025, 5, 12); // Junho = 5
 
 const mensagens = [
-  { texto: "", cor: "#ff4d6d" },
-  { texto: "Oi, meu amor! 💖", cor: "#ff4d6d" },
-  { texto: "Você é a razão da minha felicidade!", cor: "#ff85a2" },
-  { texto: "Te amo mais que tudo! 😍", cor: "#ffb3c6" },
-  { texto: "Você é a luz da minha vida! ✨", cor: "#ffd6e0" },
-  { texto: "Quero passar cada segundo ao seu lado! 💕", cor: "#ffc2d1" }
+[
+  { texto: "Oi, meu amor! 💖", cor: "#ff6b81" },
+  { texto: "Queria te dizer algumas coisinhas que estão aqui, guardadas no meu coração...", cor: "#ffa6b8" },
+  { texto: "Você foi, sem dúvida, a melhor coisa que me aconteceu.", cor: "#ff8fab" },
+  { texto: "Nunca imaginei que me apaixonaria por alguém da forma como me apaixonei por você.", cor: "#ffc2d1" },
+  { texto: "Desde que você entrou na minha vida, tudo mudou.", cor: "#ffe0e9" },
+  { texto: "Agora, eu conto as horas pra te ver, pra conversar contigo, pra estar ao seu lado.", cor: "#ffb3c6" },
+  { texto: "Quando estou com você, meu mundo muda completamente. Me sinto leve, feliz, inteiro.", cor: "#ffd6e0" },
+  { texto: "Você foi a única pessoa que realmente me conheceu de verdade...", cor: "#ff9aa2" },
+  { texto: "Que conheceu esse meu lado mais romântico e sincero.", cor: "#ffc9d1" },
+  { texto: "E eu quero que você saiba: eu te amo muitoooo... aliás, melhor dizendo, eu te amo mil milhões! ✨", cor: "#ffccd5" },
+  { texto: "Espero que, a partir de hoje, a gente possa escrever uma história linda juntos.", cor: "#ffdbe2" },
+  { texto: "Porque, sinceramente, eu acho que chegou a hora, né? Kkkkkk", cor: "#fda4af" },
+  { texto: "Então, qual vai ser a sua resposta? 😳", cor: "#ff7f9c" },
+  { texto: "Seja qual for, quero que saiba: meu amor por você continua.", cor: "#ff9eb5" },
+  { texto: "Te amo demais! ❤️", cor: "#ff4d6d" }
+]
+
 ];
 
 let indexMensagem = 0;
