@@ -73,7 +73,7 @@ function criarCoracao() {
   heart.style.left = Math.random() * window.innerWidth + 'px';
   heart.style.animationDuration = 3 + Math.random() * 2 + 's';
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 5000);
+  setTimeout(() => heart.remove(), 10000);
 }
 
 function iniciarChuvaCoracoes() {
