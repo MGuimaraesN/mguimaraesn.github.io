@@ -9,8 +9,7 @@ const photoCard = document.getElementById('photoCard');
 const dataSurpresa = new Date(2025, 5, 12); // Junho = 5
 
 const mensagens = [
-[
-    { texto: "", cor: "#ff6b81" },
+  { texto: "", cor: "#ff6b81" },
   { texto: "Oi, meu amor! 💖", cor: "#ff6b81" },
   { texto: "Queria te dizer algumas coisinhas que estão aqui, guardadas no meu coração...", cor: "#ffa6b8" },
   { texto: "Você foi, sem dúvida, a melhor coisa que me aconteceu.", cor: "#ff8fab" },
@@ -26,8 +25,6 @@ const mensagens = [
   { texto: "Então, qual vai ser a sua resposta? 😳", cor: "#ff7f9c" },
   { texto: "Seja qual for, quero que saiba: meu amor por você continua.", cor: "#ff9eb5" },
   { texto: "Te amo demais! ❤️", cor: "#ff4d6d" }
-]
-
 ];
 
 let indexMensagem = 0;
@@ -68,7 +65,6 @@ function mostrarMensagemAtual() {
 
 function proximaMensagem() {
   if (indexMensagem < mensagens.length) {
-    console.log(`Exibindo mensagem ${indexMensagem}: mensagens.length = ${mensagens.length}`);
     indexMensagem++;
     mostrarMensagemAtual();
   }
