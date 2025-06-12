@@ -73,12 +73,12 @@ function criarCoracao() {
   heart.style.left = Math.random() * window.innerWidth + 'px';
   heart.style.animationDuration = 3 + Math.random() * 2 + 's';
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 10000);
+  setTimeout(() => heart.remove(), 5000);
 }
 
 function iniciarChuvaCoracoes() {
   const intervalo = setInterval(criarCoracao, 150);
-  setTimeout(() => clearInterval(intervalo), 15000);
+  setTimeout(() => clearInterval(intervalo), 30000);
 }
 
 startButton.addEventListener('click', () => {
