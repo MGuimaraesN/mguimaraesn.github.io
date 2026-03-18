@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Decrypt</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    button { margin-top: 10px; padding: 10px; }
+    img {
+      display: none;
+      margin-top: 10px;
+      width: 40vw; /* ocupa toda largura da tela */
+      max-width: none;
+      height: auto;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%); /* centraliza mesmo saindo do container */
+    }
+    pre { background: #f4f4f4; padding: 10px; }
+  </style>
+</head>
+<body>
+
+<h2>🔓 Decrypt</h2>
+<input type="file" id="file" />
+<button onclick="tryDecrypt()">Decrypt</button>
+<img id="img" src="./image.png" />
+<pre id="output"></pre>
+
+<script>
+let tentativas = 0;
+let payload;
+
+// ler arquivo
+ document.getElementById("file").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  const text = await file.text();
+  payload = JSON.parse(text);
+  document.getElementById("output").textContent = "📂 Arquivo carregado";
+});
+
+async function tryDecrypt() {
+  const output = document.getElementById("output");
+  tentativas++;
+
+  document.getElementById("img").style.display = "block";
+
+  if (tentativas < 4) {
+    return;
+  }
+
+  if (!payload) {
+    output.textContent = "❌ Carregue um arquivo primeiro";
+    return;
+  }
+
+  try {
+    const key = await crypto.subtle.importKey(
+      "raw",
+      new Uint8Array(payload.key),
+      { name: "AES-GCM" },
+      true,
+      ["decrypt"]
+    );
+
+    const iv = new Uint8Array(payload.iv);
+    const data = new Uint8Array(payload.data);
+
+    const decrypted = await crypto.subtle.decrypt(
+      { name: "AES-GCM", iv },
+      key,
+      data
+    );
+
+    const result = new TextDecoder().decode(decrypted);
+    output.textContent = "✅ " + result;
+  } catch {
+    output.textContent = "❌ Erro ao descriptografar";
+  }
+}
+</script>
+
+</body>
+</html>
