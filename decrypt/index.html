@@ -9,12 +9,12 @@
     img {
       display: none;
       margin-top: 10px;
-      width: 40vw; /* ocupa toda largura da tela */
+      width: 40vw;
       max-width: none;
       height: auto;
       position: relative;
       left: 50%;
-      transform: translateX(-50%); /* centraliza mesmo saindo do container */
+      transform: translateX(-50%);
     }
     pre { background: #f4f4f4; padding: 10px; }
   </style>
@@ -27,12 +27,14 @@
 <img id="img" src="./image.png" />
 <pre id="output"></pre>
 
+<audio id="boom" src="./boom.mp3"></audio>
+
 <script>
 let tentativas = 0;
 let payload;
 
 // ler arquivo
- document.getElementById("file").addEventListener("change", async (e) => {
+document.getElementById("file").addEventListener("change", async (e) => {
   const file = e.target.files[0];
   const text = await file.text();
   payload = JSON.parse(text);
@@ -41,9 +43,17 @@ let payload;
 
 async function tryDecrypt() {
   const output = document.getElementById("output");
+  const audio = document.getElementById("boom");
+
   tentativas++;
 
+  // mostrar imagem sempre
   document.getElementById("img").style.display = "block";
+
+  // 🔊 tocar áudio no máximo
+  audio.volume = 1.0;
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
 
   if (tentativas < 4) {
     return;
@@ -74,8 +84,19 @@ async function tryDecrypt() {
 
     const result = new TextDecoder().decode(decrypted);
     output.textContent = "✅ " + result;
+
+    // 🔄 reset depois do sucesso
+    tentativas = 0;
+    payload = null;
+    document.getElementById("file").value = "";
+
   } catch {
     output.textContent = "❌ Erro ao descriptografar";
+
+    // 🔄 reset em erro também
+    tentativas = 0;
+    payload = null;
+    document.getElementById("file").value = "";
   }
 }
 </script>
